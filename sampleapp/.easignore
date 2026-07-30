@@ -4,6 +4,10 @@
 !ios/
 !eas.json
 
+# For FaceTec to be bundled
+!modules/facetec-sdk/android/FaceTecSDK**
+!modules/facetec-sdk/ios/FaceTecSDK**
+
 builds/
 build/
 scripts/

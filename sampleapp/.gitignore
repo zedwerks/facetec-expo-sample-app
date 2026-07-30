@@ -1,4 +1,7 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+.DS_Store
+.claude
+.expo
 
 # dependencies
 node_modules/
@@ -39,6 +42,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+#EAS
+eas.json
+!eas.example.json
 
 # generated native folders
 /ios
