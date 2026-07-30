@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+buildscript {
+    // Allows the root project to override versions declared by this library.
+    ext.safeExtGet = { prop, fallback ->
+        rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion', '2.0.21')}")
+    }
+}
+
+android {
+    namespace "ca.alberta.thewallet.facetec"
+    compileSdk safeExtGet("compileSdkVersion", 35)
+    defaultConfig {
+        minSdk safeExtGet("minSdkVersion", 28)
+        targetSdk safeExtGet("targetSdkVersion", 35)
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    kotlinOptions { jvmTarget = "17" }
+    aaptOptions { noCompress "tflite", "lite", "bin" }   // FaceTec model assets
+}
+
+// flatDir repos are per-project, not inherited by consumers — a project that
+// merely depends on :facetec-sdk-module (like :app, transitively via :expo)
+// resolves dependencies using ITS OWN repository list, not this module's. So
+// the AAR coordinate must be registered on every project via rootProject.
+// allprojects, or :app:assembleDebug fails with "Could not find
+// :facetec-sdk-10.1.7:" even though this module itself compiles fine.
+def facetecAarDir = "${project.projectDir}/FaceTecSDK-android-10.1.9"
+rootProject.allprojects {
+    repositories {
+        flatDir { dirs facetecAarDir }
+    }
+}
+
+repositories {
+    google(); mavenCentral()
+}
+
+dependencies {
+    implementation project(':expo-modules-core')
+    implementation files("${facetecAarDir}/facetec-sdk-10.1.9.aar")
+}

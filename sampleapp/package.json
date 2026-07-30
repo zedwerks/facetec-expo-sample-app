@@ -1,0 +1,53 @@
+{
+  "name": "facetec-sample-expo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@expo/vector-icons": "^15.0.2",
+    "babel-preset-expo": "~56.0.0",
+    "buffer": "^6.0.3",
+    "dotenv": "^17.4.2",
+    "expo": "~56.0.17",
+    "expo-build-properties": "~56.0.23",
+    "expo-clipboard": "~56.0.4",
+    "expo-crypto": "~56.0.0",
+    "expo-font": "~56.0.0",
+    "expo-haptics": "~56.0.0",
+    "expo-linking": "~56.0.15",
+    "expo-modules-core": "~56.0.22",
+    "expo-secure-store": "~56.0.4",
+    "expo-splash-screen": "~56.0.13",
+    "expo-status-bar": "~56.0.0",
+    "expo-system-ui": "~56.0.0",
+    "expo-updates": "~56.0.22",
+    "facetec-sdk-module": "file:./modules/facetec-sdk",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
+    "react-native-reanimated": "4.3.1",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "4.26.0",
+    "react-native-worklets": "^0.8.3"
+  },
+  "engines": {
+    "node": "v26.x",
+    "npm": "11.x"
+  },
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android --device",
+    "ios": "expo run:ios --device",
+    "prebuild": "expo prebuild --clean",
+    "clean": "rm -rf node_modules && rm -rf package-lock.json && npm install",
+    "eas:publish": "bash ./scripts/eas-publish.sh",
+    "eas:build:ios": "eas build --platform ios --local",
+    "eas:build:android": "eas build --platform android --local"
+  },
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~19.2.14",
+    "babel-plugin-module-resolver": "^2.1.1",
+    "typescript": "~6.0.3",
+    "eas-cli": "^21.3.0"
+  }
+}

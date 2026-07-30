@@ -1,0 +1,40 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="ca.alberta.thewallet.facetec" >
+4
+5    <uses-sdk android:minSdkVersion="24" />
+6
+7    <uses-permission android:name="android.permission.CAMERA" />
+7-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:2:5-65
+7-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:2:22-62
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:3:5-67
+8-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:3:22-64
+9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+9-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:4:5-79
+9-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:4:22-76
+10
+11    <uses-feature
+11-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:5:5-84
+12        android:name="android.hardware.camera"
+12-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:5:19-57
+13        android:required="true" />
+13-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:5:58-81
+14
+15    <application>
+15-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:6:5-12:19
+16        <activity
+16-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:7:9-11:52
+17            android:name="com.facetec.sdk.FaceTecActivity"
+17-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:7:19-65
+18            android:exported="false"
+18-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:10:13-37
+19            android:hardwareAccelerated="true"
+19-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:9:13-47
+20            android:screenOrientation="portrait"
+20-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:11:13-49
+21            android:theme="@style/Theme.AppCompat.NoActionBar" />
+21-->/Users/brad/Documents/GitHub/zedwerks/facetec-sample-app/FaceTec-EXPO56-SampleApp/modules/facetec-sdk/android/src/main/AndroidManifest.xml:8:13-63
+22    </application>
+23
+24</manifest>

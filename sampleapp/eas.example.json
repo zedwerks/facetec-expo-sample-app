@@ -1,0 +1,68 @@
+{
+  "cli": {
+    "version": ">= 21.4.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "node": "24.18.0",
+      "channel": "development",
+      "ios": {
+        "distribution": "internal"
+      },
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "EXPO_PUBLIC_FACETEC_DEVICE_KEY_IDENTIFIER": "{key goes here}",
+        "EXPO_PUBLIC_FACETEC_SERVER_BASE_URL": "https://api.facetec.com/api/v4/biometrics"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "node": "24.18.0",
+      "channel": "preview",
+      "ios": {
+        "distribution": "internal"
+      },
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "EXPO_PUBLIC_FACETEC_DEVICE_KEY_IDENTIFIER": "key goes here",
+        "EXPO_PUBLIC_FACETEC_SERVER_BASE_URL": "https://api.facetec.com/api/v4/biometrics"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "node": "24.18.0",
+      "channel": "production",
+      "autoIncrement": true,
+      "ios": {
+        "distribution": "store",
+        "buildConfiguration": "Release"
+      },
+      "android": {
+        "buildType": "app-bundle",
+        "gradleCommand": ":app:bundleRelease"
+      },
+      "env": {
+        "EXPO_PUBLIC_FACETEC_DEVICE_KEY_IDENTIFIER": "{key goes here}",
+        "EXPO_PUBLIC_FACETEC_SERVER_BASE_URL": "https://api.facetec.com/api/v4/biometrics"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascApiKeyPath": "./distribution/secrets/AuthKey_REPLACE_ME.p8",
+        "ascApiKeyId": "REPLACE_ME",
+        "ascApiKeyIssuerId": "REPLACE_ME",
+        "appleTeamId": "REPLACE_ME"
+      }
+    }
+  }
+}

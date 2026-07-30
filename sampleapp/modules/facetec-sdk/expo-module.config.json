@@ -1,0 +1,19 @@
+{
+  "name": "facetec-sdk-module",
+  "type": "module",
+  "platforms": [
+    "apple",
+    "android"
+  ],
+  "apple": {
+    "modules": [
+      "FaceTecSDKModule"
+    ],
+    "podspecPath": "facetec-sdk-module.podspec"
+  },
+  "android": {
+    "modules": [
+      "ca.zedwerks.facetec.FaceTecSDKModule"
+    ]
+  }
+}
