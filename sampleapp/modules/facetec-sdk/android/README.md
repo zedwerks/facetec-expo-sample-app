@@ -1,2 +1,0 @@
-# FaceTecSDK-android Version
-
