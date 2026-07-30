@@ -1,4 +1,5 @@
 
+# Extremely important to NOT exclude these files, otherwise excluded in .gitignore
 !android/
 !ios/
 !eas.json

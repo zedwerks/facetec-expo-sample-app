@@ -43,3 +43,9 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+
+## FaceTec -- do not commit the SDK files. 
+# Must be retrieved from https://dev.facetec.com/ and placed in the appropriate directories.
+modules/facetec-sdk/android/FaceTecSDK**
+modules/facetec-sdk/ios/FaceTecSDK**

@@ -1,0 +1,1 @@
+int drawable alberta 0x0
