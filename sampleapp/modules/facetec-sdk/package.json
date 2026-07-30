@@ -6,10 +6,10 @@
   "types": "src/index.ts",
   "private": true,
   "peerDependencies": {
-    "expo": "~56.0.16",
-    "expo-build-properties": "~56.0.23",
-    "expo-crypto": "~56.0.0",
-    "expo-modules-core": "~56.0.21",
+    "expo": "~56.0.17",
+    "expo-build-properties": "~56.0.24",
+    "expo-modules-core": "~56.0.22",
+    "react": "19.2.3",
     "react-native": "0.85.3"
   },
   "keywords": [
