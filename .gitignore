@@ -3,8 +3,13 @@
 .claude
 .expo
 
-# dependencies
+# Node
 node_modules/
+dist/
+build/
+.build/
+*.js.map
+.gradle/
 
 # Expo
 .expo/
@@ -21,6 +26,14 @@ expo-env.d.ts
 *.key
 *.mobileprovision
 
+# EAS deployment
+eas.json
+!eas.example.json
+credentials.json
+*.ipa
+*.apk
+*.aab
+
 # Metro
 .metro-health-check*
 
@@ -31,6 +44,7 @@ yarn-error.*
 
 # macOS
 .DS_Store
+Thumbs.db
 *.pem
 
 # IOS
@@ -43,9 +57,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-#EAS
-eas.json
-!eas.example.json
 
 # generated native folders
 /ios
@@ -56,3 +67,9 @@ eas.json
 # Must be retrieved from https://dev.facetec.com/ and placed in the appropriate directories.
 modules/facetec-sdk/android/FaceTecSDK**
 modules/facetec-sdk/ios/FaceTecSDK**
+
+# distibution folder
+distribution/
+
+#
+**build/*

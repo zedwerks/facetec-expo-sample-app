@@ -5,17 +5,19 @@ set -e -o pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  ./eas-publish.sh [options] [path/to/app.ipa]
+  ./scripts/publish-ios.sh [options]
 
-Opens an iOS .ipa in Apple's Transporter app.
+Builds an iOS .ipa with a selected EAS profile.
 
 Options:
-  -p, --preview             Create Preview version of IPA.
+  -p, --profile PROFILE     EAS build profile (default: preview).
+      --preview             Alias for --profile preview.
   -t, --transporter         Use Transporter.app path (default)
   -e, --eas                 Use EAS CLI to submit IPA.
   -h, --help                Show this help
 
-The default is to use Transporter.app to upload the IPA. Use --eas to submit via EAS CLI instead.
+Non-production profiles create an IPA for local installation and do not submit it.
+Production builds open Transporter by default. Use --eas to submit with EAS CLI instead.
 EOF
 }
 
@@ -25,15 +27,26 @@ fail() {
 }
 
 # Defaults
-preview_mode=false
+build_profile="preview"
 transporter_app=true
 eas_submit=false
 
 # Arguments
 while (( $# > 0 )); do
   case "$1" in
-    -p|--preview)
-      preview_mode=true
+    -p|--profile)
+      (( $# >= 2 )) || fail "$1 requires a profile name"
+      [[ -n "$2" && "$2" != -* ]] || fail "$1 requires a profile name"
+      build_profile="$2"
+      shift 2
+      ;;
+    --profile=*)
+      build_profile="${1#*=}"
+      [[ -n "$build_profile" ]] || fail "--profile requires a profile name"
+      shift
+      ;;
+    --preview)
+      build_profile="preview"
       shift
       ;;
     -t|--transporter)
@@ -91,31 +104,31 @@ export EX_UPDATES_NATIVE_DEBUG=1
 VERSION=$(node -p "require('./app.config.js').default.expo.version")
 
 
-if [ "$preview_mode" = true ]; then
-  echo "Preview mode enabled: building Preview version of IPA."
-  echo "checking devices..."
-  eas device:list
-  echo "----------------------"
-  TARGET_DIR="$APP_DIR/distribute/build/preview"
+if [ "$build_profile" != "production" ]; then
+  echo "Building iOS IPA with EAS profile: $build_profile"
+  if [ "$build_profile" = "preview" ]; then
+    echo "Checking registered devices..."
+    eas device:list
+    echo "----------------------"
+  fi
+  TARGET_DIR="$APP_DIR/distribute/build/$build_profile"
   mkdir -p "$TARGET_DIR"
-  echo "Preview mode enabled: building Preview version of IPA."
-  IPA_PATH="$TARGET_DIR/theWallet-${VERSION}-preview-$(date +%Y%m%d%H%M%S).ipa"
+  IPA_PATH="$TARGET_DIR/sampleapp-${VERSION}-${build_profile}-$(date +%Y%m%d%H%M%S).ipa"
   echo "Building iOS app with EAS and outputting to $IPA_PATH"
-  eas build --platform ios --profile preview --local --output "$IPA_PATH"
-  open $TARGET_DIR
-  echo "Now use EAS Orbit macOS app to install the ipa on your device."
+  eas build --platform ios --profile "$build_profile" --local --output "$IPA_PATH"
+  open "$TARGET_DIR"
+  echo "Use EAS Orbit to install the IPA on a registered device."
   exit 0
-else 
-  echo "Building production version of IPA."
 fi
 
+echo "Building production version of IPA."
 TARGET_DIR="$APP_DIR/distribute/build/production"
 mkdir -p "$TARGET_DIR"
-IPA_PATH="$TARGET_DIR/theWallet-${VERSION}-$(date +%Y%m%d%H%M%S).ipa"
+IPA_PATH="$TARGET_DIR/sampleapp-${VERSION}-$(date +%Y%m%d%H%M%S).ipa"
 
 echo "Building iOS app with EAS and outputting to $IPA_PATH"
-echo "eas build --platform ios --profile production --local --output \"$IPA_PATH\""
-eas build --platform ios --profile production --local --output "$IPA_PATH"
+echo "eas build --platform ios --profile $build_profile --local --output \"$IPA_PATH\""
+eas build --platform ios --profile "$build_profile" --local --output "$IPA_PATH"
 
 if [ "$transporter_app" == true ]; then
   echo "Opening IPA in Transporter.app..."
@@ -124,6 +137,6 @@ if [ "$transporter_app" == true ]; then
 else
   echo "Submitting iOS app to App Store Connect with EAS"
   echo "About to submit IPA path: $IPA_PATH"
-  echo "eas submit --platform ios --path \"$IPA_PATH\" --profile production"
-  eas submit --platform ios --path "$IPA_PATH" --profile production
+  echo "eas submit --platform ios --path \"$IPA_PATH\" --profile $build_profile"
+  eas submit --platform ios --path "$IPA_PATH" --profile "$build_profile"
 fi

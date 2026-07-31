@@ -18,7 +18,7 @@ buildscript {
 }
 
 android {
-    namespace "ca.alberta.thewallet.facetec"
+    namespace "com.zedwerks.facetec"
     compileSdk safeExtGet("compileSdkVersion", 35)
     defaultConfig {
         minSdk safeExtGet("minSdkVersion", 28)

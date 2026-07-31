@@ -39,7 +39,7 @@
     "ios": "expo run:ios --device",
     "prebuild": "expo prebuild --clean",
     "clean": "rm -rf node_modules && rm -rf package-lock.json && npm install",
-    "eas:publish": "bash ./scripts/eas-publish.sh",
+    "eas:publish": "bash ./scripts/publish-ios.sh",
     "eas:build:ios": "eas build --platform ios --local",
     "eas:build:android": "eas build --platform android --local"
   },
