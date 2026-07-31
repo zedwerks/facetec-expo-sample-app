@@ -64,7 +64,7 @@ done
 
 
 PROJECT_ROOT=$(git rev-parse --show-toplevel)
-APP_DIR="$PROJECT_ROOT/sampleapp"
+APP_DIR="$PROJECT_ROOT"
 
 
 MOBILE_DEVICE_DIR="$HOME/Library/MobileDevice"
