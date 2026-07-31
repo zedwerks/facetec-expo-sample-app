@@ -41,6 +41,8 @@ For iOS development, install:
 - An Apple Developer account and development team
 - A FaceTec developer account, device key identifier, and SDK download
 
+> You need to sign up as a Developer with FaceTec first. Then you can download the SDK.
+
 Download the FaceTec SDKs from [dev.facetec.com](https://dev.facetec.com/).
 The SDK binaries are licensed separately by FaceTec and are intentionally not
 stored in this repository.
